@@ -1,15 +1,15 @@
-FROM eclipse-temurin:17-jdk AS build
+
+FROM node:22-alpine AS build
 WORKDIR /app
 
-COPY ..
-RUN chmod +x gradlew
-RUN ./gradlew bootJar --no-daemon
+COPY package*.json ./
+RUN nmp ci
 
-FROM eclipse-temurin:17-jre
-WORKDIR /app
+COPY . .
+RUN npm run build
 
-COPY --from=build /app/build/lib/*.jar.app.jar
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 
-EXPOSE 8080
-ENTRYPOINT["java","-jar","app.jar"]
-
+EXPOSE 80

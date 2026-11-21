@@ -1,4 +1,4 @@
 package com.example.ilaydaaozensimplebookservice.dto;
 
-public class LoginRequest {
+public record LoginRequest(String username, String password) {
 }

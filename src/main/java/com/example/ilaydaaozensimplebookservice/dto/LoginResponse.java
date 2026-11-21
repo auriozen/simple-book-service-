@@ -1,4 +1,4 @@
 package com.example.ilaydaaozensimplebookservice.dto;
 
-public class LoginResponse {
+public record LoginResponse(String username, String password) {
 }
