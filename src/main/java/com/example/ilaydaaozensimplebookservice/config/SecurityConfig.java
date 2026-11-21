@@ -1,0 +1,4 @@
+package com.example.ilaydaaozensimplebookservice.config;
+
+public class SecurityConfig {
+}
