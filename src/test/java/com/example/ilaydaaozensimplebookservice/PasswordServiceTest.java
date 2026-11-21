@@ -31,11 +31,13 @@ class PasswordEncoderTest
         assertTrue(passwordService.verifyPassword(hashed, password));
     }
 
+
     @Test
     void shouldReturnTrueIfPasswordIsValid() {
         String password = "password123";
         String hashed = passwordService.hashPassword(password);
 
-        assertFalse(passwordService.verifyPassword(hashed, password));
+        assertTrue(passwordService.verifyPassword(hashed, password));
     }
+
 }
